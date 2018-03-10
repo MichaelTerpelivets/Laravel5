@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Employee;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class EmployeeController extends Controller
@@ -58,7 +59,7 @@ class EmployeeController extends Controller
             $new_employ->phone = $request->phone;
             $new_employ->company_id = $request->company_id;
             $new_employ->save();
-            return route('employee.index');
+            return Redirect::route('employee.index');
         }
     }
 
@@ -104,6 +105,7 @@ class EmployeeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Employee::destroy($id);
+        return Redirect::route('employee.index');
     }
 }

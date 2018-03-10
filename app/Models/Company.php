@@ -28,7 +28,11 @@ class Company extends Model
             $constrain->aspectRatio();
         });
         $logo->stream();
-        Storage::disk('local')->put('public/logo/'.$logo_name,$logo,'public');
+        Storage::disk('public')->put('public/logo/'.$logo_name,$logo,'public');
         return $logo_name;
+    }
+
+    public function deleteLogo($name_logo){
+        Storage::delete('/public/logo/'.$name_logo);
     }
 }

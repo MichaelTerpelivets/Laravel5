@@ -12,7 +12,7 @@
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                    <span class="m-r-sm text-muted welcome-message">Welcome Darth Coder!!!</span>
+                    <span class="m-r-sm text-muted welcome-message">Welcome Dart Coder!</span>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">

@@ -36,7 +36,14 @@
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->logo}}</td>
                                 <td>{{$company->website}}</td>
-                                <td>Action</td>
+                                <td>
+                                    <a class="btn btn-default" href="{{route('companies.edit',$company->id)}}">Редактировать</a>
+                                    <form method="post" action="{{route('companies.destroy',$company->id)}}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <button class="btn btn-danger" type="submit">Удалить</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
