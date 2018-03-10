@@ -41,7 +41,8 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Телефон</label>
                             <div class="col-sm-10">
-                                <input type="text" name="phone" required placeholder="Введите телефон работника" class="form-control">
+                                <input type="text" name="phone" required placeholder="Введите телефон работника"
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
@@ -49,10 +50,9 @@
                             <label class="col-sm-2 control-label">Компания</label>
                             <div class="col-sm-10">
                                 <select class="form-control m-b" name="company_id">
-                                    <option value="1">option 1</option>
-                                    <option value="2">option 2</option>
-                                    <option value="3">option 3</option>
-                                    <option value="4">option 4</option>
+                                    @foreach($companies as $company)
+                                        <option value="{{$company->id}}">{{$company->name}}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

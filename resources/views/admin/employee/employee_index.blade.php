@@ -36,10 +36,17 @@
                                 <td>{{$empl->id}}</td>
                                 <td>{{$empl->first_name}}</td>
                                 <td>{{$empl->last_name}}</td>
-                                <td></td>
+                                <td>{{$empl->company->name}}</td>
                                 <td>{{$empl->email}}</td>
                                 <td>{{$empl->phone}}</td>
-                                <td>Action</td>
+                                <td>
+                                    <a class="btn btn-default" href="{{route('employee.edit',$empl->id)}}">Редактировать</a>
+                                    <form action="{{route('employee.destroy',$empl->id)}}" method="post">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

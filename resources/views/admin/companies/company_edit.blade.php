@@ -14,6 +14,7 @@
                 <div class="ibox-content">
                     <form method="post" action="{{route('companies.update',$company->id)}}" class="form-horizontal"
                           enctype="multipart/form-data">
+                        <input type="hidden" name="_method" value="PUT">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Название</label>
