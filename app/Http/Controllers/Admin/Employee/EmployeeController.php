@@ -18,7 +18,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employee = Employee::all();
+        $employee = Employee::paginate(10);
         return view('admin.employee.employee_index', ['employee' => $employee]);
     }
 
@@ -48,7 +48,6 @@ class EmployeeController extends Controller
             'phone' => 'required',
             'company_id' => 'required',
         ]);
-
         if ($validator->fails()) {
             return redirect('admin/employee/create')
                 ->withErrors($validator)
@@ -84,7 +83,9 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companies = Company::all();
+        $employee = Employee::find($id);
+        return view('admin.employee.employee_update',compact('employee','companies'));
     }
 
     /**
@@ -96,7 +97,30 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'first_name' => 'required|max:100',
+            'last_name' => 'required|max:100',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'company_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect('admin/employee/create')
+                ->withErrors($validator)
+                ->withInput();
+        } else {
+            $employ =Employee::find($id);
+            if(!$employ){
+            // return back with message error
+            }
+            $employ->first_name = $request->first_name;
+            $employ->last_name = $request->last_name;
+            $employ->email = $request->email;
+            $employ->phone = $request->phone;
+            $employ->company_id = $request->company_id;
+            $employ->save();
+            return Redirect::route('employee.index');
+        }
     }
 
     /**

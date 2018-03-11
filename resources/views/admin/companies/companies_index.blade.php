@@ -55,6 +55,7 @@
                         </tr>
                         </tfoot>
                     </table>
+                    <div class="text-center">{{$companies->links()}}</div>
                 </div>
             </div>
         </div>

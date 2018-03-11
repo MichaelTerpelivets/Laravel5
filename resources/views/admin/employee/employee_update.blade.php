@@ -1,0 +1,81 @@
+@extends('admin.layouts.admin-app')
+@section('admin_content')
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Форма редактирования работника </h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" action="{{route('employee.update',$employee->id)}}" class="form-horizontal">
+                        <input type="hidden" name="_method" value="put">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Имя</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="first_name" required value="{{$employee->first_name}}"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Фамилия</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="last_name" required value="{{$employee->last_name}}"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" name="email"
+                                       value="{{$employee->email}}">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Телефон</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="phone" required value="{{$employee->phone}}"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Компания</label>
+                            <div class="col-sm-10">
+                                <select class="form-control m-b" name="company_id">
+                                    @foreach($companies as $company)
+                                        <option value="{{$company->id}}" @if($employee->company_id === $company->id) selected @endif>{{$company->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit">Сохранить</button>
+                            </div>
+                        </div>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </form>
+                    <a class="btn btn-default" href="{{route('employee.index')}}">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
