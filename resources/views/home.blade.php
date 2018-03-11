@@ -8,30 +8,26 @@
         </div>
     </section>
     <!-- ПОПУЛЯРНЫЕ ПРОЕКТЫ -->
-    {{--<section class="popular">--}}
-        {{--<div class="container">--}}
-            {{--<header class="text-center">Companies</header>--}}
-            {{--<div class="row">--}}
-                    {{--@foreach($adverts as $advert)--}}
-                    {{--<div class="col-md-6">--}}
-                        {{--<div class="item thumbnail">--}}
-                            {{--<img src="{{asset('images/front/pexels-photo-442150.jpeg')}}" height="200" width="600"/>--}}
-                            {{--<a href="{{route('adverts.show',$advert->id)}}"><h3>{{$advert->title}}</h3></a>--}}
-                            {{--<div class="description">{{$advert->description}}</div>--}}
-                            {{--<author>Автор: <a href="#">{{$advert->author->name}}</a></author>--}}
-                            {{--<div class="row">--}}
-                                {{--<div class="col-md-4">--}}
-                                    {{--<b> 40% Просмотров</b>--}}
-                                {{--</div>--}}
-
-                            {{--</div>--}}
-                        {{--</div>--}}
-                {{--</div>--}}
-                    {{--@endforeach--}}
-            {{--</div>--}}
-            {{--<div >{{ $adverts->links() }}</div>--}}
-        {{--</div>--}}
-    {{--</section>--}}
+    <section class="popular">
+        <div class="container">
+            <header class="text-center">Компании</header>
+            <div class="row">
+                    @foreach($companies as $company)
+                    <div class="col-md-6">
+                        <div class="item thumbnail">
+                            <h3 class="text-center">{{$company->name}}</h3>
+                            <img src="{{asset('storage/logo/'.$company->logo)}}" height="100" width="100"/>
+                            <h3 class="text-center">Описание</h3>
+                            <p><strong>Email: </strong>{{$company->email}}</p>
+                            <p><strong>Сайт: </strong>{{$company->website}}</p>
+                            <p><strong>Работников: </strong> {{$company->employeeCount()}}</p>
+                        </div>
+                </div>
+                    @endforeach
+            </div>
+            <div class="text-center">{{ $companies->links() }}</div>
+        </div>
+    </section>
     <section class="about">
         <div class="container">
             <p class="text-center">Вы создаёте мир своими усилиями</p>

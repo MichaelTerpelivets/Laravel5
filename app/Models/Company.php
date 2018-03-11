@@ -35,4 +35,8 @@ class Company extends Model
     public function deleteLogo($name_logo){
         Storage::delete('/public/logo/'.$name_logo);
     }
+
+    public function employeeCount(){
+        return $this->hasMany('App\Models\Employee','company_id','id')->count();
+    }
 }

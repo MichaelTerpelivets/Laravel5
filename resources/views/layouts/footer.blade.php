@@ -13,7 +13,6 @@
                     <div class="col-md-3 col-sm-6">
                         <ul>
                             <div><b>Про нас</b></div>
-                            <li><a href="#">Что такое Advertisement</a></li>
                             <li><a href="#">Контакты</a></li>
                             <li><a href="#">Цвета и логотипы</a></li>
                         </ul>
@@ -29,11 +28,6 @@
                     </div>
                     <div class="col-md-3 col-sm-6">
                         info.companies@gmail.com
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <a href="#">Insta</a>
-                        <a href="#">Fb</a>
-                        <a href="#">Twiter</a>
                     </div>
                 </div>
             </div>
